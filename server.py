@@ -1,16 +1,35 @@
-from flask import Flask
-
-PORT = 8000
-MESSAGE = "Hello, My Dear Poornima! \n Are you doing good. \n"
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
+@app.route('/')
+def welcome():
+    return '''
+        <html>
+        <head>
+            <title>Welcome Page</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    background-color: #f4f4f4;
+                    text-align: center;
+                    padding: 50px;
+                }
+                h1 {
+                    color: #333;
+                }
+                p {
+                    font-size: 20px;
+                    color: #666;
+                }
+            </style>
+        </head>
+        <body>
+            <h1>Welcome to My Super Page</h1>
+            <p>This is a Python 3.9 powered web application using Flask!</p>
+        </body>
+        </html>
+    '''
 
-@app.route("/")
-def root():
-    result = MESSAGE.encode("utf-8")
-    return result
-
-
-if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=PORT)
+if __name__ == '__main__':
+    app.run(debug=True)
